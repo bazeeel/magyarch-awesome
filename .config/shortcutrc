@@ -1,2 +1,20 @@
 # vim: filetype=sh
-alias 
+alias h="cd ~/ && ls -a" \
+d="cd ~/Dokumentumok && ls -a" \
+D="cd ~/Letöltések && ls -a" \
+m="cd ~/Zenék && ls -a" \
+pp="cd ~/Képek && ls -a" \
+vv="cd ~/Videők && ls -a" \
+cf="cd ~/.config && ls -a" \
+lb="cd ~/.local/bin && ls -a" \
+mn="cd /mnt && ls -a" \
+cfB="$EDITOR ~/.bashrc" \
+cfa="$EDITOR ~/.config/aliasrc" \
+cfA="$EDITOR ~/.config/alacritty/alacritty.yml" \
+cfx="$EDITOR ~/.Xresources" \
+cfu="$EDITOR ~/.config/newsboat/urls" \
+cfs="$EDITOR ~/.config/suckless/slstatus/config.def.h" \
+cfmb="$EDITOR ~/.config/ncmpcpp/bindings" \
+cfmc="$EDITOR ~/.config/ncmpcpp/config" \
+cfb="$EDITOR ~/.config/suckless/dwm/config.def.h" \
+cfk="$EDITOR ~/.config/sxhkd/sxhkdrc"

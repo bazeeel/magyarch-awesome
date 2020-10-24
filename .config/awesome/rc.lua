@@ -78,7 +78,7 @@ local themes = {
     "blackburn",       -- 1
     "copland",         -- 2
     "dremora",         -- 3
-    "holo",            -- 4
+    "magyarch",        -- 4
     "multicolor",      -- 5
     "powerarrow",      -- 6
     "powerarrow-dark", -- 7
