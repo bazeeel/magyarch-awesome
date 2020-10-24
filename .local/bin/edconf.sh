@@ -2,15 +2,12 @@
 
 
 
-# Dmenu script for editing some of my more frequently edited config files.
-
-
 declare options=("alias
 bash
-bspwm
+awesome
 profile
 vifm
-polybar
+theme
 sxhkd
 xprofile
 quit")
@@ -27,8 +24,8 @@ case "$choice" in
 	bash)
 		choice="$HOME/.bashrc"
 	;;
-	dwm)
-		choice="$HOME/.config/suckless/dwm/config.def.h"
+	awesome)
+		choice="$HOME/.config/awesome/rc.lua"
 	;;
 	profile)
 		choice="$HOME/.profile"
@@ -36,8 +33,8 @@ case "$choice" in
 	vifm)
 		choice="$HOME/.config/vifm/vifmrc"
 	;;
-	polybar)
-		choice="$HOME/.config/polybar/config"
+	theme)
+		choice="$HOME/.config/awesome/themes/holo/theme.lua"
 	;;
 	sxhkd)
 		choice="$HOME/.config/sxhkd/sxhkdrc"
