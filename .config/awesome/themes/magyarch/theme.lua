@@ -25,7 +25,7 @@ theme.fg_focus                                  = "#2e8b57"
 theme.bg_focus                                  = "#2f2b26"
 theme.bg_normal                                 = "#2f2b26"
 theme.fg_urgent                                 = "#CC9393"
-theme.bg_urgent                                 = "#006B8E"
+theme.bg_urgent                                 = "#2f2b26"
 theme.border_width                              = dpi(3)
 theme.border_normal                             = "#2f2b26"
 theme.border_focus                              = "#2e8b57"
@@ -259,14 +259,14 @@ local netbg = wibox.container.background(net.widget, theme.bg_focus, gears.shape
 local networkwidget = wibox.container.margin(netbg, dpi(0), dpi(0), dpi(5), dpi(5))
 
 -- Weather
-theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder 
-    notification_preset = { font = "Monospace 9", position = "bottom_right" },
-})
+--theme.weather = lain.widget.weather({
+  --  city_id = 2643743, -- placeholder 
+    --notification_preset = { font = "Monospace 9", position = "bottom_right" },
+--})
 
 -- Launcher
-local mylauncher = awful.widget.button({ image = theme.awesome_icon_launcher })
-mylauncher:connect_signal("button::press", function() awful.util.mymainmenu:toggle() end)
+--local mylauncher = awful.widget.button({ image = theme.awesome_icon_launcher })
+--mylauncher:connect_signal("button::press", function() awful.util.mymainmenu:toggle() end)
 
 -- Separators
 local first = wibox.widget.textbox('<span font="JetBrains Mono 7"> </span>')
