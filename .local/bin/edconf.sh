@@ -34,7 +34,7 @@ case "$choice" in
 		choice="$HOME/.config/vifm/vifmrc"
 	;;
 	theme)
-		choice="$HOME/.config/awesome/themes/holo/theme.lua"
+		choice="$HOME/.config/awesome/themes/magyarch/theme.lua"
 	;;
 	sxhkd)
 		choice="$HOME/.config/sxhkd/sxhkdrc"
