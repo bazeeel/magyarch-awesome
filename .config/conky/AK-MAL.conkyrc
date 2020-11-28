@@ -1,0 +1,194 @@
+conky.config = {
+--Credits : Andy Kefi from Facebook
+	use_xft = true,
+	-- font = 'DejaVu Sans:size=10',
+	-- font = 'JetBrains Mono:size=10',
+	font = 'JetBrains Mono:style=bold:size=10',
+	font1 = 'Fontawesome:bold:size=10',
+	font2 = 'Anja Eliane:style=bold:size=20',
+	font3 = 'Zekton:Bold:size=8',
+	font4 = 'Space age:size=45',
+	font5 = 'JetBrains Mono:style=light:size=9',
+	font7 = 'Zekton:Bold:size=10',
+	font9 = 'Fontawesome:bold:size=9',
+	xftalpha = 1.0,
+
+-- Used fonts
+-- https://www.jetbrains.com/lp/mono/
+-- https://www.dafont.com/anja-eliane.font
+-- https://www.dafont.com/space-age.font
+-- https://www.dafont.com/zekton.font
+-- JetBrains Mono , bold , light ,
+-- Fontawesome ,
+
+	text_buffer_size = 2048,
+    -- override_utf8_locale = true,
+-- Update interval in seconds
+	update_interval = 1,
+
+-- This is the number of times Conky will update before quitting.
+	total_run_times = 0,
+
+	own_window = true,
+	own_window_transparent = true,
+-- own_window_type override
+-- own_window_type = 'panel',
+    own_window_type = 'dock', --use this if you want a nice shadow to appear around conky
+
+-- If own_window is yes, these window manager hints may be used
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+-- Use double buffering (reduces flicker, may not work for everyone)
+	double_buffer = true,
+
+-- Minimum size of text area
+	minimum_width = 230,
+	minimum_height = 0,
+ -- maximum_width 240,
+
+-- Draw shades?
+	draw_shades = false,
+
+-- Draw outlines?
+	draw_outline = false,
+
+-- Draw borders around text
+	draw_borders = false,
+
+-- Stippled borders?
+	stippled_borders = 0,
+
+-- border margins
+--	border_margin = 5,
+
+-- border margins
+    border_inner_margin = 5,
+    border_outer_margin = 5,
+
+-- border width
+	border_width = 3,
+
+-- Default colors and also border colors
+--default_color = 'red',
+--default_color = 'lightblue',
+--default_color = 'black',
+    default_color = 'gray',
+--default_color = 'white',
+--default_color = 'red',
+--default_color = 'cyan',
+--default_color = 'green',
+--default_color = 'yellow',
+--default_color = 'blue',
+--default_color = 'magenta',
+--default_color = 'cyan',
+color1 = '#c83737',
+color2 = '#c3cdc8',
+color3 = '#2e8b57',
+--default_outline_color grey
+	own_window_colour = '#000000',
+
+-- Text alignment, other possible values are commented
+--alignment = 'top_left',
+  alignment = 'top_right',
+--alignment = 'bottom_left',
+--alignment bottom_right
+--alignment middle_right
+
+-- Gap between borders of screen and text
+-- same thing as passing -x at command line
+	gap_x = 30,
+	gap_y = 100,
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+
+-- set to yes if you want all text to be in uppercase
+	uppercase = false,
+
+-- number of cpu samples to average
+-- set to 1 to disable averaging
+	cpu_avg_samples = 2,
+
+-- number of net samples to average
+-- set to 1 to disable averaging
+	net_avg_samples = 2,
+
+-- Force UTF8? note that UTF8 support required XFT
+	override_utf8_locale = true,
+
+-- Add spaces to keep things from moving about? This only affects certain objects.
+	use_spacer = 'none',
+
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+};
+
+conky.text = [[
+${color1}${font5}[${color2}SYSTEM INFO${color1}]${color3}${hr 2}
+${voffset 5}${alignc}${font2}${color1}  Magy${color2}Arch${color3}Linux
+${voffset -5} ${offset 140}${color2}${font Anja Eliane:style=bold:size=15}${exec lsb_release -sr}
+${color1}${font5}[${color2}PC$color1}]${color3}${hr 2}
+${color3}${font1}${color3} ${color2}${font}${exec cut -d '\' -f 1 /sys/devices/virtual/dmi/id/sys_vendor}${alignr}${color}${font}${exec cut -d '\' -f 1 /sys/devices/virtual/dmi/id/product_family}
+${color3}${font1} ${color2}${font}${exec grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | awk {'print $1" "$2"  "$3'}}${alignr}${color}${font}${exec grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | awk {'print $5" "$6'}}
+${color1}${font5}[${color2}KERNEL$color1}]${color3}${hr 2}
+${color3}${font1} ${color2}${font}Kernel: ${alignr}${kernel}
+${color1}${font5}[${color2}ROOT$color1}]${color3}${hr 2}
+${color3}${font1} ${color2}${font}File System: ${color}${font}${alignr}${fs_type}
+#${color3}${font9} ${color2}${font}Battery: ${battery_percent BAT0}% ${alignr}${color3}${battery_bar 8,60 BAT0}
+${color1}${font5}[${color2}MEMORY$color1}]${color3}${hr 2}
+${color3}${font1}  ${color2}${font}RAM: $mem $memperc% ${alignr}${color3}${membar 8,60}
+${color1}${font5}[${color2}CPU CORES$color1}]${color3}${hr 2}
+${color3}${font1} ${color2}${font}CPU 1: ${cpu cpu1}% ${alignr}${color3}${cpubar cpu1 8,60}
+${color3}${font1} ${color2}${font}CPU 2: ${cpu cpu2}% ${alignr}${color3}${cpubar cpu2 8,60}
+${color3}${font1} ${color2}${font}CPU 3: ${cpu cpu3}% ${alignr}${color3}${cpubar cpu3 8,60}
+${color3}${font1} ${color2}${font}CPU 4: ${cpu cpu4}% ${alignr}${color3}${cpubar cpu4 8,60}
+${color3}${font1} ${color2}${font}CPU 5: ${cpu cpu5}% ${alignr}${color3}${cpubar cpu5 8,60}
+${color3}${font1} ${color2}${font}CPU 6: ${cpu cpu6}% ${alignr}${color3}${cpubar cpu6 8,60}
+${color3}${font1} ${color2}${font}CPU 7: ${cpu cpu7}% ${alignr}${color3}${cpubar cpu7 8,60}
+${color3}${font1} ${color2}${font}CPU 8: ${cpu cpu8}% ${alignr}${color3}${cpubar cpu8 8,60}
+${color1}${font5}[${color2}CPU TEMP$color1}]${color3}${hr 2}
+${color3}${font1}  ${color2}${font}Cpu Temp: ${alignr}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
+${color3}${font1} ${color2}${font}Cpu Fan: ${alignr}${execi 10 sensors | grep 'fan1' | awk {'print $2" "$3'}}
+${color3}${font1} ${color2}${font}Uptime: ${alignr}${uptime}
+${color1}${font5}[${color2}USER$color1}]${color3}${hr 2}
+${color3}${font1} ${color1}${font}${exec w | tail -1 | awk {'print $1'}}${font}${color2}@${font}${color3}${font}${exec hostnamectl | awk {'print $3'} | head -1 }
+${color1}${font5}[${color2}DATE & TIME$color1}]${color3}${hr 2}
+##### Multicolor time
+${font4}${color1}${alignc}${time %H}${color2}${alignc}:${color3}${alignc}${time %M}
+##### single color time
+#${color2}${alignc 0}{time %H:%M}
+######### ! USE  LOCAL date format enable disable - not both at same ...
+#${font7}${voffset -30}${alignc}${color1}${time %A,} ${color2}${time %d} ${time %B} ${color3}${time %Y}
+######### ! USE universal English lang date override locale ! enable !! Long line !!  below there are *backslash line splitters !!
+${color1}${font7}${voffset -30}${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A"},${color2}\
+${color2} ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%d"}${color3}\
+ ${execi 300 LANG=${template9} LC_TIME=${template9} date +"%B"}
+${color1}${font5}[${color2}HDD$color1}]${color3}${hr 2}
+${color3}${font1} ${color2}${font}Root: ${alignr}${color2}${fs_size /}
+${color3}${font1} ${color2}${font}${fs_used /}/${fs_size /} ${alignr}${color3}${fs_bar 8,60 /}
+${color3}${font1} ${color2}${font}${fs_free /home}/${fs_size /home} ${alignr}${color3}${fs_bar 8,60 /home}
+${color3}${font1} ${color2}${font}SWAP: $swap$swapperc% ${alignr}${color3}${swapbar 8,60}
+${color1}${font5}[${color2}NETWORK$color1}]${color3}${hr 2}
+#Wired = enp8s0 and WiFi = wlp3s0
+${if_existing /proc/net/route enp8s0}${color3}${font1} ${color2}${font}Wired
+${color3}${font1} ${color2}${font}Up: ${upspeed enp8s0}${alignr}${color3}${upspeedgraph enp8s0 8,60 black black}
+${color3}${font1} ${color2}${font}Down: ${downspeed enp8s0}${alignr}${color3}${downspeedgraph enp8s0 8,60 black black}
+${color3}${font1} ${color2}${font}Upload: ${alignr}${totalup enp8s0}
+${color3}${font1} ${color2}${font}Download: ${alignr}${totaldown enp8s0}${else}${if_existing /proc/net/route wlp3s0}${color3}${font1} ${color2}${font}Wireless
+${color3}${font1} ${color2}${font}SSID: ${wireless_essid wlp3s0}
+${color3}${font1} ${color2}${font}Signal: ${wireless_link_qual_perc wlp3s0}% ${alignr}${color3}${wireless_link_bar 8,60 wlp3s0}
+${color3}${font1} ${color2}${font}Up: ${upspeed wlp3s0}${alignr}${color3}${upspeedgraph wlp3s0 8,60 black black}
+${color3}${font1} ${color2}${font}Down: ${downspeed wlp3s0}${alignr}${color3}${downspeedgraph wlp3s0 8,60 black black}
+${color3}${font1} ${color2}${font}Upload: ${alignr}${totalup wlp3s0}
+${color3}${font1} ${color2}${font}Download: ${alignr}${totaldown wlp3s0}${endif}${endif}
+####### ! FAKE YOUR IP ADDRESS ! uncomment 2 lines below :) !
+${color3}${font}Local IP: ${color1}${font}${alignr}127.0.0.43
+#${color3}${font}External IP: ${color1}${font}${alignr}213.24.76.43
+####### ! GET REAL IP ADDRESS ! uncomment 2 lines below :) !
+#${color1}${font}Local IP: ${color3}${font}${alignr}${execi 1000 ip a | grep inet | grep -vw lo | grep -v inet6 | cut -d \/ -f1 | sed 's/[^0-9\.]*//g'}
+#${color1}${font}External IP: ${color3}${font}${alignr}${execi 1000 wget -q -O- http://ipecho.net/plain; echo}
+####### ! GET REAL IP ADDRESS ! 1 (one) liner output 1 line [ ###.###.###.###   ###.###.###.###] uncomment 1 line below :)
+#${color3}${font}${execi 1000 ip a | grep inet | grep -vw lo | grep -v inet6 | cut -d \/ -f1 | sed 's/[^0-9\.]*//g'}${color1}${font}${alignr}${execi 1000  wget -q -O- http://ipecho.net/plain; echo}
+${color3}${hr 2}
+
+]];

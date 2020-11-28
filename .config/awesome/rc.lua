@@ -107,6 +107,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -370,15 +371,15 @@ globalkeys = my_table.join(
         {description = "toggle wibox", group = "awesome"}),
 
     -- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "Up", function () lain.util.useless_gaps_resize(3) end,
+    awful.key({ modkey, "Control" }, "Down", function () lain.util.useless_gaps_resize(3) end,
               {description = "increment useless gaps", group = "tag"}),
-    awful.key({ altkey, "Control" }, "Down", function () lain.util.useless_gaps_resize(-3) end,
+    awful.key({ modkey, "Control" }, "Up", function () lain.util.useless_gaps_resize(-3) end,
               {description = "decrement useless gaps", group = "tag"}),
 
     -- Dynamic tagging
-    awful.key({ modkey, "altkey" }, "n", function () lain.util.add_tag() end,
+    awful.key({ modkey, "Control" }, "n", function () lain.util.add_tag() end,
               {description = "add new tag", group = "tag"}),
-    awful.key({ modkey, "altkey" }, "r", function () lain.util.rename_tag() end,
+    awful.key({ modkey, "Control" }, "r", function () lain.util.rename_tag() end,
               {description = "rename tag", group = "tag"}),
     awful.key({ modkey, "Shift" }, "Left", function () lain.util.move_tag(-1) end,
               {description = "move tag to the left", group = "tag"}),
@@ -442,36 +443,36 @@ globalkeys = my_table.join(
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
-    awful.key({ altkey }, "Up",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume up", group = "hotkeys"}),
-    awful.key({ altkey }, "Down",
-        function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume down", group = "hotkeys"}),
-    awful.key({ altkey }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "toggle mute", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 100%", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "0",
-        function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
-        end,
-        {description = "volume 0%", group = "hotkeys"}),
+--    awful.key({ altkey }, "Up",
+  --      function ()
+    --        os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+      --      beautiful.volume.update()
+        --end,
+--        {description = "volume up", group = "hotkeys"}),
+  --  awful.key({ altkey }, "Down",
+    --    function ()
+      --      os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+        --    beautiful.volume.update()
+        --end,
+--        {description = "volume down", group = "hotkeys"}),
+  --  awful.key({ altkey }, "m",
+    --    function ()
+      --      os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+        --    beautiful.volume.update()
+        --end,
+        --{description = "toggle mute", group = "hotkeys"}),
+--    awful.key({ altkey, "Control" }, "m",
+  --      function ()
+    --        os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
+      --      beautiful.volume.update()
+        --end,
+--        {description = "volume 100%", group = "hotkeys"}),
+--    awful.key({ altkey, "Control" }, "0",
+  --      function ()
+    --        os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
+      --      beautiful.volume.update()
+        --end,
+--        {description = "volume 0%", group = "hotkeys"}),
 
     -- MPD control
     awful.key({ altkey, "Control" }, "Up",
@@ -694,16 +695,16 @@ awful.rules.rules = {
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
 
-    -- Set applications to always map on tag 
-    --{ rule = { class = "Firefox" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    -- Set applications to always map on tag
+    { rule = { class = "Firefox" },
+      properties = { screen = 1, tag = awful.util.tagnames[1] } },
 
     --{ rule = { class = "Gimp", role = "gimp-image-window" },
       --    properties = { maximized = true } },
- 
+
     -- find class or role via xprop command
-    { rule = { class = "browser" },
-      properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
+    --{ rule = { class = "Firefox" },
+      --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
 
     --{ rule = { class = browser1 },
       --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
@@ -725,7 +726,7 @@ awful.rules.rules = {
         --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
 
     --{ rule = { class = "Brackets" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },      
+        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
 }
 -- }}}
 

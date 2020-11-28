@@ -1,8 +1,8 @@
 # vim: filetype=sh
 alias h="cd ~/ && ls -a" \
 d="cd ~/Dokumentumok && ls -a" \
-D="cd ~/Letöltések && ls -a" \
-m="cd ~/Zenék && ls -a" \
+L="cd ~/Letöltések && ls -a" \
+Z="cd ~/Zenék && ls -a" \
 pp="cd ~/Képek && ls -a" \
 vv="cd ~/Videők && ls -a" \
 cf="cd ~/.config && ls -a" \

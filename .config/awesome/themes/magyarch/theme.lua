@@ -1,7 +1,7 @@
 --[[
 
      Awesome WM theme 3.0
-     original holo theme credits goes to github.com/lcpz 
+     original holo theme credits goes to github.com/lcpz
 
 --]]
 
@@ -19,19 +19,20 @@ theme.default_dir                               = require("awful.util").get_them
 theme.icon_dir                                  = os.getenv("HOME") .. "/.config/awesome/themes/magyarch/icons"
 theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/magyarch/wallpaper.png"
 theme.font                                      = "JetBrains Mono 10"
-theme.taglist_font                              = "JetBrains Mono Regular 10"
-theme.fg_normal                                 = "#FFFFFF"
-theme.fg_focus                                  = "#2e8b57"
-theme.bg_focus                                  = "#2f2b26"
-theme.bg_normal                                 = "#2f2b26"
+theme.taglist_font                              = "JetBrains Mono Regular 12"
+theme.fg_normal                                 = "#2f2b26"
+theme.fg_focus                                  = "#2f2b26"
+theme.bg_focus                                  = "#c3cdc8"
+theme.bg_normal                                 = "#c3cdc8"
 theme.fg_urgent                                 = "#CC9393"
-theme.bg_urgent                                 = "#2f2b26"
+theme.bg_urgent                                 = "#c3cdc8"
 theme.border_width                              = dpi(3)
 theme.border_normal                             = "#2f2b26"
 theme.border_focus                              = "#2e8b57"
 theme.taglist_fg_focus                          = "#2e8b57"
-theme.tasklist_bg_normal                        = "#2f2b26"
-theme.tasklist_fg_focus                         = "#2e8b57"
+theme.tasklist_bg_normal                        = "#c3cdc8"
+theme.tasklist_fg_focus                         = "#2f2b26"
+theme.menu_bg_focus                             = "#2e8b57"
 theme.menu_height                               = dpi(20)
 theme.menu_width                                = dpi(160)
 theme.menu_icon_size                            = dpi(32)
@@ -72,7 +73,7 @@ theme.layout_magnifier                          = theme.icon_dir .. "/magnifier.
 theme.layout_floating                           = theme.icon_dir .. "/floating.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = dpi(10)
+theme.useless_gap                               = dpi(5)
 theme.titlebar_close_button_normal              = theme.default_dir.."/titlebar/close_normal.png"
 theme.titlebar_close_button_focus               = theme.default_dir.."/titlebar/close_focus.png"
 theme.titlebar_minimize_button_normal           = theme.default_dir.."/titlebar/minimize_normal.png"
@@ -101,23 +102,23 @@ local green   = "#2e8b57"
 local space3 = markup.font("JetBrains Mono 4", " ")
 
 -- Clock
-local mytextclock = wibox.widget.textclock(markup("#FFFFFF", space3 .. "%H:%M   " .. markup.font("JetBrains Mono 4", " ")))
+local mytextclock = wibox.widget.textclock(markup("#2f2b26", space3 .. "%H:%M   " .. markup.font("JetBrains Mono 4", " ")))
 mytextclock.font = theme.font
 local clock_icon = wibox.widget.imagebox(theme.clock)
 local clockbg = wibox.container.background(mytextclock, theme.bg_focus, gears.shape.rectangle)
 local clockwidget = wibox.container.margin(clockbg, dpi(0), dpi(3), dpi(5), dpi(5))
 
 -- Calendar
-local mytextcalendar = wibox.widget.textclock(markup.fontfg(theme.font, "#FFFFFF", space3 .. "%Y %b %d " .. markup.font("JetBrains Mono 5", " ")))
+local mytextcalendar = wibox.widget.textclock(markup.fontfg(theme.font, "#2f2b26", space3 .. "%Y %b %d " .. markup.font("JetBrains Mono 5", " ")))
 local calendar_icon = wibox.widget.imagebox(theme.calendar)
 local calbg = wibox.container.background(mytextcalendar, theme.bg_focus, gears.shape.rectangle)
 local calendarwidget = wibox.container.margin(calbg, dpi(0), dpi(0), dpi(5), dpi(5))
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock, mytextcalendar },
     notification_preset = {
-        fg = "#FFFFFF",
+        fg = "#2f2b26",
         bg = theme.bg_normal,
-        position = "bottom_right",
+        position = "top_right",
         font = "Monospace 10"
     }
 })
@@ -174,7 +175,7 @@ theme.mpd = lain.widget.mpd({
     end
 })
 local musicbg = wibox.container.background(theme.mpd.widget, theme.bg_focus, gears.shape.rectangle)
-local musicwidget = wibox.container.margin(musicbg, dpi(0), dpi(0), dpi(5), dpi(5))
+local musicwidget = wibox.container.margin(musicbg, dpi(0), dpi(0), dpi(3), dpi(3))
 
 musicwidget:buttons(my_table.join(awful.button({ }, 1,
 function () awful.spawn(theme.musicplr) end)))
@@ -260,7 +261,7 @@ local networkwidget = wibox.container.margin(netbg, dpi(0), dpi(0), dpi(5), dpi(
 
 -- Weather
 --theme.weather = lain.widget.weather({
-  --  city_id = 2643743, -- placeholder 
+  --  city_id = 2643743, -- placeholder
     --notification_preset = { font = "Monospace 9", position = "bottom_right" },
 --})
 
@@ -269,7 +270,7 @@ local networkwidget = wibox.container.margin(netbg, dpi(0), dpi(0), dpi(5), dpi(
 --mylauncher:connect_signal("button::press", function() awful.util.mymainmenu:toggle() end)
 
 -- Separators
-local first = wibox.widget.textbox('<span font="JetBrains Mono 7"> </span>')
+local first = wibox.widget.textbox('<span font="JetBrains Mono 5"> </span>')
 local spr_small = wibox.widget.imagebox(theme.spr_small)
 local spr_very_small = wibox.widget.imagebox(theme.spr_very_small)
 local spr_right = wibox.widget.imagebox(theme.spr_right)
@@ -282,7 +283,7 @@ local barcolor  = gears.color({
     type  = "linear",
     from  = { dpi(32), 0 },
     to    = { dpi(32), dpi(32) },
-    stops = { {0, theme.bg_focus}, {0.25, "#2f2b26"}, {1, theme.bg_focus} }
+    stops = { {0, theme.bg_focus}, {0.25, "#c3cdc8"}, {1, theme.bg_focus} }
 })
 
 function theme.at_screen_connect(s)
@@ -340,17 +341,19 @@ function theme.at_screen_connect(s)
             --wibox.widget.systray(),
             --theme.mail.widget,
             --bat.widget,
-            spr_right,
+            --spr_right,
             musicwidget,
             prev_icon,
             next_icon,
             stop_icon,
             play_pause_icon,
-            bar,
             mpd_icon,
-            bar,
-            spr_very_small,
+            --spr_very_small,
             volumewidget,
+            bar,
+            netdown_icon,
+            networkwidget,
+            netup_icon,
             bar,
             cpu_icon,
             cpuwidget,
@@ -360,7 +363,7 @@ function theme.at_screen_connect(s)
             bar,
             clock_icon,
             clockwidget,
-            spr_left,
+            --spr_left,
             wibox.widget.systray(),
         },
     }
