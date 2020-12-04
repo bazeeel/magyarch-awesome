@@ -1,10 +1,11 @@
 !! Colorscheme
 
-*background:  #2f2b26
-*foreground:  #ffffff
+!!background: #2f2b26   # for magyarch theme
+*background:  #121212   # for magyarch-dark theme
+*foreground:  #c3cdc8
  black:       #313539
  red:         #c63737
- green:       #2e8b57
+ green:       #062902
  yellow:      #f2e635
  blue:        #314ad0
  magenta:     #b30ad0

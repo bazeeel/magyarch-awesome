@@ -112,7 +112,7 @@ local markup = lain.util.markup
 
 -- Clock
 --os.setlocale(os.getenv("LANG")) -- to localize the clock
-local mytextclock = wibox.widget.textclock(markup("#FFFFFF", "%a %d %b, %H:%M"))
+local mytextclock = wibox.widget.textclock(markup("#FFFFFF", "%Y. %m. %d, %H:%M"))
 mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },

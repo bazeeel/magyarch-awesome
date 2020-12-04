@@ -78,16 +78,18 @@ local themes = {
     "blackburn",       -- 1
     "copland",         -- 2
     "dremora",         -- 3
-    "magyarch",        -- 4
-    "multicolor",      -- 5
-    "powerarrow",      -- 6
-    "powerarrow-dark", -- 7
-    "rainbow",         -- 8
-    "steamburn",       -- 9
-    "vertex",          -- 10
+    "magyarch-dark",   -- 4
+    "magyarch-white",  -- 5
+    "multicolor",      -- 6
+    "powerarrow",      -- 7
+    "powerarrow-dark", -- 8
+    "rainbow",         -- 9
+    "steamburn",       -- 10
+    "vertex",          -- 11
+    "magyarch",        -- 12
 }
 
-local chosen_theme = themes[4]
+local chosen_theme = themes [4]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "alacritty"
@@ -101,6 +103,8 @@ local scrlocker    = "slock"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { " ",  " ",  " ",  " ", " ", " ", " ", " ", " " }
+--awful.util.tagnames = { "🥎 ", "🎭 ", "📋 ", "🍭 ", "🎲 ", "🎬 ", "🔰 ",  "📂 ", "🤖 " }
+--awful.util.tagnames = { "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 " }
 awful.layout.layouts = {
     --awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -263,8 +267,8 @@ globalkeys = my_table.join(
       --        {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
-              {description = "lock screen", group = "hotkeys"}),
+    --awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+      --        {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,

@@ -4,12 +4,12 @@
 
 ! State:                                'bg'        'fg'     'bgalt'      'hlbg'    'hlfg'
 
-rofi.color-normal:                   #2f2b26,   #CDCFD0,  #2f2b26,   #2e8b57,  #CDCFD0,
-rofi.color-urgent:                	 #2f2b26,   #CDCFD0,  #2f2b26,   #2e8b57,  #CDCFD0,
-rofi.color-active:                   #2f2b26,   #CDCFD0,  #2f2b26,   #2e8b57,  #CDCFD0,
+rofi.color-normal:                   #121212,   #c3cdc8,  #121212,   #2e8b57,  #121212,
+rofi.color-urgent:                   #121212,   #c3cdc8,  #121212,   #2e8b57,  #121212,
+rofi.color-active:                   #121212,   #c3cdc8,  #121212,   #2e8b57,  #121212,
 
 !                                  'background'    'border'    'separator'
-rofi.color-window:                    #2f2b26,     #05090F,      #ebedf8,
+rofi.color-window:                    #121212,     #05090F,      #ebedf8,
 
 
 !rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi

@@ -16,22 +16,22 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.default_dir                               = require("awful.util").get_themes_dir() .. "default"
-theme.icon_dir                                  = os.getenv("HOME") .. "/.config/awesome/themes/magyarch/icons"
-theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/magyarch/wallpaper.png"
+theme.icon_dir                                  = os.getenv("HOME") .. "/.config/awesome/themes/magyarch-white/icons"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/magyarch-white/wallpaper.png"
 theme.font                                      = "JetBrains Mono 10"
 theme.taglist_font                              = "JetBrains Mono Regular 12"
-theme.fg_normal                                 = "#c3cdc8"
-theme.fg_focus                                  = "#2f2b26"
-theme.bg_focus                                  = "#2f2b26"
-theme.bg_normal                                 = "#2f2b26"
+theme.fg_normal                                 = "#2f2b26"
+theme.fg_focus                                  = "#c3cdc8"
+theme.bg_focus                                  = "#c3cdc8"
+theme.bg_normal                                 = "#c3cdc8"
 theme.fg_urgent                                 = "#CC9393"
-theme.bg_urgent                                 = "#2f2b26"
+theme.bg_urgent                                 = "#c3cdc8"
 theme.border_width                              = dpi(3)
 theme.border_normal                             = "#2f2b26"
-theme.border_focus                              = "#2e8b57"
+theme.border_focus                              = "#c3cdc8"
 theme.taglist_fg_focus                          = "#2e8b57"
-theme.tasklist_bg_normal                        = "#2f2b26"
-theme.tasklist_fg_focus                         = "#2f2b26"
+theme.tasklist_bg_normal                        = "#c3cdc8"
+theme.tasklist_fg_focus                         = "#c3cdc8"
 theme.menu_bg_focus                             = "#2e8b57"
 theme.menu_height                               = dpi(20)
 theme.menu_width                                = dpi(160)
@@ -102,21 +102,21 @@ local green   = "#2e8b57"
 local space3 = markup.font("JetBrains Mono 4", " ")
 
 -- Clock
-local mytextclock = wibox.widget.textclock(markup("#c3cdc8", space3 .. "%H:%M   " .. markup.font("JetBrains Mono 4", " ")))
+local mytextclock = wibox.widget.textclock(markup("#2f2b26", space3 .. "%H:%M   " .. markup.font("JetBrains Mono 4", " ")))
 mytextclock.font = theme.font
 local clock_icon = wibox.widget.imagebox(theme.clock)
 local clockbg = wibox.container.background(mytextclock, theme.bg_focus, gears.shape.rectangle)
 local clockwidget = wibox.container.margin(clockbg, dpi(0), dpi(3), dpi(5), dpi(5))
 
 -- Calendar
-local mytextcalendar = wibox.widget.textclock(markup.fontfg(theme.font, "#c3cdc8", space3 .. "%Y %b %d " .. markup.font("JetBrains Mono 5", " ")))
+local mytextcalendar = wibox.widget.textclock(markup.fontfg(theme.font, "#2f2b26", space3 .. "%Y %b %d " .. markup.font("JetBrains Mono 5", " ")))
 local calendar_icon = wibox.widget.imagebox(theme.calendar)
-local calbg = wibox.container.background(mytextcalendar, theme.bg_focus, gears.shape.rectangle)
+local calbg = wibox.container.background(mytextcalendar, theme.font, "#2f2b26", gears.shape.rectangle)
 local calendarwidget = wibox.container.margin(calbg, dpi(0), dpi(0), dpi(5), dpi(5))
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock, mytextcalendar },
     notification_preset = {
-        fg = "#c3cdc8",
+        fg = "#2f2b26",
         bg = theme.bg_normal,
         position = "top_right",
         font = "Monospace 10"
@@ -260,46 +260,30 @@ local netbg = wibox.container.background(net.widget, theme.bg_focus, gears.shape
 local networkwidget = wibox.container.margin(netbg, dpi(0), dpi(0), dpi(5), dpi(5))
 
 -- Weather
-theme.weather = lain.widget.weather({
-    city_id = 3045190, -- placeholder (Sopron)
-    notification_preset = { font = "Monospace 10" },
-    settings = function()
-        units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(" " .. markup.font(theme.font, units .. "°C") .. " ")
-    end
-})
+--theme.weather = lain.widget.weather({
+  --  city_id = 2643743, -- placeholder
+    --notification_preset = { font = "Monospace 9", position = "bottom_right" },
+--})
 
 -- Launcher
 --local mylauncher = awful.widget.button({ image = theme.awesome_icon_launcher })
 --mylauncher:connect_signal("button::press", function() awful.util.mymainmenu:toggle() end)
 
 -- Separators
-local space = wibox.widget.textbox(" ")
-local rspace1 = wibox.widget.textbox()
-local rspace0 = wibox.widget.textbox()
-local rspace2 = wibox.widget.textbox()
-local rspace3 = wibox.widget.textbox()
-local rspace4 = wibox.widget.textbox()
-local tspace1 = wibox.widget.textbox()
-tspace1.forced_width = dpi(16)
-rspace1.forced_width = dpi(5)
-rspace0.forced_width = dpi(5)
-rspace2.forced_width = dpi(5)
-rspace3.forced_width = dpi(5)
-rspace4.forced_width = dpi(2)
-
-local lspace1 = wibox.widget.textbox()
-local lspace2 = wibox.widget.textbox()
-local lspace3 = wibox.widget.textbox()
-lspace1.forced_height = dpi(16)
-lspace2.forced_height = dpi(10)
-lspace3.forced_height = dpi(16)
+local first = wibox.widget.textbox('<span font="JetBrains Mono 5"> </span>')
+local spr_small = wibox.widget.imagebox(theme.spr_small)
+local spr_very_small = wibox.widget.imagebox(theme.spr_very_small)
+local spr_right = wibox.widget.imagebox(theme.spr_right)
+local spr_bottom_right = wibox.widget.imagebox(theme.spr_bottom_right)
+local spr_left = wibox.widget.imagebox(theme.spr_left)
+local bar = wibox.widget.imagebox(theme.bar)
+local bottom_bar = wibox.widget.imagebox(theme.bottom_bar)
 
 local barcolor  = gears.color({
     type  = "linear",
     from  = { dpi(32), 0 },
     to    = { dpi(32), dpi(32) },
-    stops = { {0, theme.bg_focus}, {0.25, "#2f2b26"}, {1, theme.bg_focus} }
+    stops = { {0, theme.bg_focus}, {0.25, "#c3cdc8"}, {1, theme.bg_focus} }
 })
 
 function theme.at_screen_connect(s)
@@ -337,7 +321,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons, { bg_focus = theme.bg_focus, shape = gears.shape.rectangle, shape_border_width = 5, shape_border_color = theme.tasklist_bg_normal, align = "center" })
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(24) })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26) })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -358,28 +342,25 @@ function theme.at_screen_connect(s)
             --theme.mail.widget,
             --bat.widget,
             --spr_right,
-            rspace0,
-            theme.weather.icon,
-            theme.weather.widget,
-            rspace1,
-            --musicwidget,
-            --prev_icon,
-            --next_icon,
-            --stop_icon,
-            --play_pause_icon,
-            --mpd_icon,
+            musicwidget,
+            prev_icon,
+            next_icon,
+            stop_icon,
+            play_pause_icon,
+            mpd_icon,
             --spr_very_small,
-            --volumewidget,
+            volumewidget,
+            bar,
             netdown_icon,
             networkwidget,
             netup_icon,
-            rspace2,
+            bar,
             cpu_icon,
             cpuwidget,
-            rspace3,
+            bar,
             calendar_icon,
             calendarwidget,
-            rspace4,
+            bar,
             clock_icon,
             clockwidget,
             --spr_left,
