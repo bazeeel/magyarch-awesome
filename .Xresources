@@ -1,7 +1,7 @@
 !! Colorscheme
 
-!!background: #2f2b26   # for magyarch theme
-*background:  #121212   # for magyarch-dark theme
+
+*background:  #121212
 *foreground:  #c3cdc8
  black:       #313539
  red:         #c63737
