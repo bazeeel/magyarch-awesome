@@ -18,18 +18,18 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-dark"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Terminus 9"
-theme.fg_normal                                 = "#DDDDFF"
-theme.fg_focus                                  = "#EA6F81"
+theme.fg_normal                                 = "#c3cdc8"
+theme.fg_focus                                  = "#2e8b57"
 theme.fg_urgent                                 = "#CC9393"
-theme.bg_normal                                 = "#1A1A1A"
-theme.bg_focus                                  = "#313131"
-theme.bg_urgent                                 = "#1A1A1A"
-theme.border_width                              = dpi(1)
+theme.bg_normal                                 = "#2f2b26"
+theme.bg_focus                                  = "#1a1a1a"
+theme.bg_urgent                                 = "#2f2b26"
+theme.border_width                              = dpi(2)
 theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#7F7F7F"
+theme.border_focus                              = "#2e8b57"
 theme.border_marked                             = "#CC9393"
-theme.tasklist_bg_focus                         = "#1A1A1A"
-theme.titlebar_bg_focus                         = theme.bg_focus
+theme.tasklist_bg_focus                         = "#2f2b26"
+theme.titlebar_bg_focus                         = theme.bg_normal
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
 theme.menu_height                               = dpi(16)
@@ -68,7 +68,7 @@ theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = dpi(0)
+theme.useless_gap                               = dpi(5)
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -96,7 +96,7 @@ local keyboardlayout = awful.widget.keyboardlayout:new()
 -- Textclock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock = awful.widget.watch(
-    "date +'%a %d %b %R'", 60,
+    "date +'%Y %b %d %H:%M'", 60,
     function(widget, stdout)
         widget:set_markup(" " .. markup.font(theme.font, stdout))
     end
@@ -113,7 +113,7 @@ theme.cal = lain.widget.cal({
 })
 
 -- Mail IMAP check
-local mailicon = wibox.widget.imagebox(theme.widget_mail)
+--local mailicon = wibox.widget.imagebox(theme.widget_mail)
 --[[ commented because it needs to be set before use
 mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
 theme.mail = lain.widget.imap({
@@ -302,7 +302,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -318,18 +318,18 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            keyboardlayout,
+            --keyboardlayout,
             spr,
             arrl_ld,
             wibox.container.background(mpdicon, theme.bg_focus),
             wibox.container.background(theme.mpd.widget, theme.bg_focus),
             arrl_dl,
-            volicon,
-            theme.volume.widget,
-            arrl_ld,
-            wibox.container.background(mailicon, theme.bg_focus),
+            --volicon,
+            --theme.volume.widget,
+            --arrl_ld,
+            --wibox.container.background(mailicon, theme.bg_focus),
             --wibox.container.background(theme.mail.widget, theme.bg_focus),
-            arrl_dl,
+            --arrl_dl,
             memicon,
             mem.widget,
             arrl_ld,
@@ -349,6 +349,11 @@ function theme.at_screen_connect(s)
             wibox.container.background(net.widget, theme.bg_focus),
             arrl_dl,
             clock,
+            --arrl_ld,
+            volicon,
+            theme.volume.widget,
+            keyboardlayout,
+            --arrl_dl,
             spr,
             arrl_ld,
             wibox.container.background(s.mylayoutbox, theme.bg_focus),

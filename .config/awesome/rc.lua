@@ -89,7 +89,7 @@ local themes = {
     "magyarch",        -- 12
 }
 
-local chosen_theme = themes [4]
+local chosen_theme = themes [8]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "alacritty"
@@ -395,7 +395,7 @@ globalkeys = my_table.join(
     -- Standard program
     --awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
       --        {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, "Shift" }, "Escape", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
@@ -417,7 +417,7 @@ globalkeys = my_table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, "Control" }, "n",
+    awful.key({ modkey, "Control" }, "s",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -447,18 +447,18 @@ globalkeys = my_table.join(
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
---    awful.key({ altkey }, "Up",
-  --      function ()
-    --        os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
-      --      beautiful.volume.update()
-        --end,
---        {description = "volume up", group = "hotkeys"}),
-  --  awful.key({ altkey }, "Down",
-    --    function ()
-      --      os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
-        --    beautiful.volume.update()
-        --end,
---        {description = "volume down", group = "hotkeys"}),
+    awful.key({ altkey }, "Up",
+        function ()
+            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            beautiful.volume.update()
+        end,
+        {description = "volume up", group = "hotkeys"}),
+    awful.key({ altkey }, "Down",
+        function ()
+            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            beautiful.volume.update()
+        end,
+        {description = "volume down", group = "hotkeys"}),
   --  awful.key({ altkey }, "m",
     --    function ()
       --      os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
