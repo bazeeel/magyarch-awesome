@@ -46,4 +46,4 @@ case "$choice" in
 		exit 1
 	;;
 esac
-subl3 -c "$choice"
+subl -c "$choice"
