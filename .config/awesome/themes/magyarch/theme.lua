@@ -21,17 +21,17 @@ theme.wallpaper                                 = os.getenv("HOME") .. "/.config
 theme.font                                      = "JetBrains Mono 10"
 theme.taglist_font                              = "JetBrains Mono Regular 12"
 theme.fg_normal                                 = "#c3cdc8"
-theme.fg_focus                                  = "#2f2b26"
-theme.bg_focus                                  = "#2f2b26"
-theme.bg_normal                                 = "#2f2b26"
+theme.fg_focus                                  = "#1a1a1a"
+theme.bg_focus                                  = "#1a1a1a"
+theme.bg_normal                                 = "#1a1a1a"
 theme.fg_urgent                                 = "#CC9393"
-theme.bg_urgent                                 = "#2f2b26"
+theme.bg_urgent                                 = "#1a1a1a"
 theme.border_width                              = dpi(3)
-theme.border_normal                             = "#2f2b26"
+theme.border_normal                             = "#1a1a1a"
 theme.border_focus                              = "#2e8b57"
 theme.taglist_fg_focus                          = "#2e8b57"
-theme.tasklist_bg_normal                        = "#2f2b26"
-theme.tasklist_fg_focus                         = "#2f2b26"
+theme.tasklist_bg_normal                        = "#1a1a1a"
+theme.tasklist_fg_focus                         = "#1a1a1a"
 theme.menu_bg_focus                             = "#2e8b57"
 theme.menu_height                               = dpi(20)
 theme.menu_width                                = dpi(160)
@@ -299,7 +299,7 @@ local barcolor  = gears.color({
     type  = "linear",
     from  = { dpi(32), 0 },
     to    = { dpi(32), dpi(32) },
-    stops = { {0, theme.bg_focus}, {0.25, "#2f2b26"}, {1, theme.bg_focus} }
+    stops = { {0, theme.bg_focus}, {0.25, "#1a1a1a"}, {1, theme.bg_focus} }
 })
 
 function theme.at_screen_connect(s)
