@@ -694,14 +694,33 @@ awful.rules.rules = {
                      size_hints_honor = false
      }
     },
+             
+
+          -- Floating clients but centered in screen
+    { rule_any = { 
+        class = { 
+            "Polkit-gnome-authentication-agent-1",
+            "Pavucontrol","URxvt","Lxappearance","Sxiv" } },
+        properties = { floating = true, ontop = true },
+            callback = function (c)
+            c:geometry({ width=730, height=450 })
+              awful.placement.centered(c,nil)
+            end }, 
+
 
     -- Titlebars
-    { rule_any = { type = { "dialog", "normal" } },
+    { rule_any = { type = { "dialog","normal" } },
       properties = { titlebars_enabled = true } },
+      
 
+    -- Dialogs are always centered, floating and ontop
+    { rule_any = {type = { "dialog" }
+      }, properties = { placement = awful.placement.centered, floating = true, ontop = true }
+    },  
+    
     -- Set applications to always map on tag
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    { rule = { class = "Brave-browser" },
+      properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
 
     --{ rule = { class = "Gimp", role = "gimp-image-window" },
       --    properties = { maximized = true } },
@@ -716,7 +735,7 @@ awful.rules.rules = {
     { rule = { class = "discord" },
         properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true } },
 
-    { rule = { class = "Subl3" },
+    { rule = { class = "Subl" },
       properties = { screen = 1, tag = awful.util.tagnames[3], switchtotag = true  } },
 
     --{ rule = { class = "Opera" },
