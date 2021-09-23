@@ -26,7 +26,7 @@ super + {_,shift + } n
 
 # S,R,lock script,calendar app
 super + {_,shift + } c
-    {power, $TERMFLOAT -g 70x20-16+30 -e calcurse}
+    {rofi_run -l, $TERMFLOAT -g 70x20-16+30 -e calcurse}
 
 # Default web browser brave and firefox
 super + {_,shift + } w
