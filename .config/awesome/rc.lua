@@ -700,12 +700,22 @@ awful.rules.rules = {
     { rule_any = { 
         class = { 
             "Polkit-gnome-authentication-agent-1",
-            "Pavucontrol","URxvt","Lxappearance","Sxiv" } },
+            "Pavucontrol","URxvt","Lxappearance","Sxiv","Blueberry" } },
         properties = { floating = true, ontop = true },
             callback = function (c)
             c:geometry({ width=730, height=450 })
               awful.placement.centered(c,nil)
             end }, 
+
+      
+    { rule_any = {
+      role = {
+          "AlarmWindow",  -- Thunderbird's calendar.
+          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+          "Preferences",
+          "setup",
+        }
+      }, properties = { placement = awful.placement.centered, floating = true, ontop = true }},
 
 
     -- Titlebars
